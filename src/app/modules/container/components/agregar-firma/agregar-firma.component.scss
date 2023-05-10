@@ -1,0 +1,18 @@
+@import "/src/assets/styles/scss/variables/colors.scss";
+
+.form-label {
+  font-weight: 500;
+}
+
+.btn-agregar {
+  background-color: $emerald;
+  //padding: 4px 33px;
+  color: $white;
+  border-radius: 4px;
+}
+
+.modal-footer {
+  //display: inline-block;
+  justify-content: flex-start;
+  border: none;
+}

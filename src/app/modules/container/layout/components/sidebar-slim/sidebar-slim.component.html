@@ -1,0 +1,53 @@
+<div class="sidebar" [ngClass]="{ 'expanded': isExpanded }">
+  <div class="content">
+    <div class="link mt-2 mb-3">
+      <div class="content" [routerLink]="['#']" [routerLinkActive]="'active'">
+        <div class="icon">
+            <fa-icon [icon]="faB"></fa-icon>
+        </div>
+        <div class="title">Item1</div>
+      </div>
+    </div>
+    <div class="link">
+      <div class="content" [routerLink]="['#']" [routerLinkActive]="'active'">
+        <div class="icon">
+          <fa-icon [icon]="faPenNib"></fa-icon>
+        </div>
+        <div class="title">Item2</div>
+      </div>
+    </div>
+    <div class="link">
+      <div class="content" [routerLink]="['#']" [routerLinkActive]="'active'">
+        <div class="icon">
+          <fa-icon [icon]="faFileSignature"></fa-icon>
+        </div>
+        <div class="title">Item3</div>
+      </div>
+    </div>
+    <div class="link">
+      <div class="content" [routerLink]="['#']" [routerLinkActive]="'active'">
+        <div class="icon">
+          <fa-icon [icon]="faEnvelopesBulk"></fa-icon>
+        </div>
+        <div class="title">Item4</div>
+      </div>
+    </div>
+    <div class="link">
+      <div class="content" [routerLink]="['#']" [routerLinkActive]="'active'">
+        <div class="icon">
+          <fa-icon [icon]="faBook"></fa-icon>
+        </div>
+        <div class="title">Item5</div>
+      </div>
+    </div>
+    <div class="link">
+      <div class="content" [routerLink]="['#']" [routerLinkActive]="'active'">
+        <div class="icon">
+          <fa-icon [icon]="faGear"></fa-icon>
+        </div>
+        <div class="title">Item6</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"></div>
+</div>

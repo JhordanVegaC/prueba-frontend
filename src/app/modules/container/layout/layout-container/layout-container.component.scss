@@ -1,0 +1,36 @@
+@import "/src/assets/styles/scss/variables/colors.scss";
+
+.container-fondo {
+  background-color: $pale-oscuro;
+  width: 100%;
+}
+
+.hamburguesa {
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.navbar-header {
+  color: $white;
+  background-color: $charcoal;
+
+  a {
+    color: $white;
+  }
+
+  .switch-header {
+    padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+  }
+
+  .btn-logout {
+    color: $white;
+    border-radius: 100%;
+    background-color: $emerald;
+    padding: 6px 9px;
+  }
+}
+
+
+

@@ -1,0 +1,53 @@
+@import "/src/assets/styles/scss/variables/colors.scss";
+
+.container-page {
+  padding: 30px 20px;
+
+  .container-white {
+    background-color: $white;
+    padding: 25px 30px;
+    border-radius: 5px;
+
+    .btn-agregar {
+      background-color: $emerald;
+      padding: 4px 33px;
+      color: $white;
+      border-radius: 4px;
+    }
+
+    .input-search {
+      width: 300px;
+      border-radius: 3px;
+
+      &::placeholder {
+        text-align: right;
+      }
+    }
+
+    .btn-exportar {
+      border-radius: 3px;
+      padding: 3px 13px;
+    }
+
+  }
+
+}
+
+/*
+.highlight {
+  background-color: yellow;
+}
+*/
+
+// Three dots vertical menu
+.dropdown-toggle::after {
+  display: none;
+}
+
+.dropdown-menu {
+  --bs-dropdown-min-width: 4rem;
+}
+
+
+
+

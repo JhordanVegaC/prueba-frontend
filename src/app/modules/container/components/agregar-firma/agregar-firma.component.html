@@ -1,0 +1,140 @@
+
+  <div class="modal-header">
+		<h4 class="modal-title text-center">{{ title }}</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form [formGroup]="firmaForm">
+      <div class="row">
+        <div class="col-xs-12 col-md-6 px-4">
+
+          <div class="col mb-4">
+            <label for="tipoFirma" class="form-label">
+              Tipo de firma
+            </label>
+            <select id="tipoFirma" class="form-select"
+              aria-label="Default select example"
+              formControlName="tipoFirma"
+            >
+              <option selected>Seleccione un tipo de firma</option>
+              <option value="1">Firma Digital</option>
+              <option value="2">Rúbrica escaneada</option>
+              <option value="3">Firma Electrónica</option>
+            </select>
+          </div>
+
+          <div class="col mb-4">
+            <label for="razonSocial" class="form-label">Razón Social / Persona</label>
+            <input formControlName="razonSocial"
+              class="form-control"
+              id="razonSocial"
+              placeholder="Ingrese la razón social / persona"
+            >
+          </div>
+
+          <div class="col mb-4">
+            <label for="representanteLegal" class="form-label">Representante Legal</label>
+            <input formControlName="representanteLegal"
+              class="form-control"
+              id="representanteLegal"
+              placeholder="Ingrese el representante legal"
+            >
+          </div>
+
+          <div class="col mb-4">
+            <label for="empresaAcreditadora" class="form-label">Empresa Acreditadora</label>
+            <input formControlName="empresaAcreditadora"
+              class="form-control"
+              id="empresaAcreditadora"
+              placeholder="Ingrese la empresa acreditadora"
+            >
+          </div>
+
+          <div class="col mb-4">
+            <label for="fechaEmision" class="form-label">
+              Fecha de emisión
+            </label>
+            <div class="input-group">
+              <input
+                formControlName="fechaEmision"
+                id="fechaEmision"
+                class="form-control"
+                placeholder="dd-mm-yyyy"
+                name="dp1"
+                ngbDatepicker
+                #dp1="ngbDatepicker"
+                [maxDate]="maxDate"
+
+              />
+              <!--button class="btn btn-outline-secondary bi bi-calendar3" (click)="dp.toggle()" type="button"></button-->
+              <button class="btn btn-outline-secondary" (click)="dp1.toggle()" type="button">
+                <fa-icon [icon]="faCalendarDays">
+                </fa-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="col mb-4">
+            <label for="fechaVencimiento" class="form-label">
+              Fecha de vencimiento
+            </label>
+            <div class="input-group">
+              <input
+                formControlName="fechaVencimiento"
+                id="fechaVencimiento"
+                class="form-control"
+                placeholder="dd-mm-yyyy"
+                name="dp2"
+                ngbDatepicker
+                #dp2="ngbDatepicker"
+                [minDate]="minDate"
+              />
+              <!--button class="btn btn-outline-secondary bi bi-calendar3" (click)="dp.toggle()" type="button"></button-->
+              <button class="btn btn-outline-secondary" (click)="dp2.toggle()" type="button">
+                <fa-icon [icon]="faCalendarDays">
+                </fa-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="col mb-3">
+            <label for="rutaRubrica" class="form-label">Rúbrica Escaneada</label>
+            <input formControlName="rutaRubrica" class="form-control" type="file"
+              id="rutaRubrica" accept=".jpg,.png"
+            >
+          </div>
+
+          {{ rutaRubrica }}
+
+        </div>
+
+        <div class="col-xs-12 col-md-6 px-4">
+          <h3 class="text-center">Subir Certificado</h3>
+          {{ rutaCertificadoDigital }}
+          <p>Este certificado se encriptará en nuestro servidor.</p>
+
+          <label for="certificadoDigital" class="form-label">Subir archivos</label>
+          <input formControlName="certificadoDigital" class="form-control" type="file" id="certificadoDigital">
+
+
+        </div>
+
+      </div>
+		</form>
+	</div>
+	<div class="modal-footer px-0 pb-4">
+
+    <div class="col-6 px-4">
+      <button type="button" class="btn btn-agregar w-100"
+        (click)="activeModal.close(firmaForm.value)"
+        [disabled]="firmaForm.invalid"
+      >
+        {{ txtButton}}
+      </button>
+      <!--button type="submit" class="btn btn-agregar w-100"
+      >
+        {{ txtButton}}
+      </button-->
+    </div>
+
+	</div>

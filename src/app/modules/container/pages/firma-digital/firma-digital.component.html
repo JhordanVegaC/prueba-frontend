@@ -1,0 +1,132 @@
+<div class="container-page">
+  <h4 class="mb-4">Configurar Firmas</h4>
+
+  <div class="container-white">
+
+    <h5 class="mb-4">Lista de Certificados por Empresa</h5>
+
+    <div class="px-3">
+
+      <button class="btn btn-agregar mb-4"
+        (click)="agregarModificarFirma(true)"
+      >
+        Agregar nuevo
+      </button>
+
+      <form>
+        <div class="mb-3 row">
+          <div class="col-sm-auto ms-auto">
+            <input id="table-filtering-search"
+              class="form-control input-search"
+              type="text" [formControl]="filter"
+              placeholder="Buscar"
+            />
+          </div>
+        </div>
+      </form>
+
+      <div class="row mb-3">
+        <div class="col-sm-auto ms-auto">
+          <button class="btn btn-outline-success btn-exportar mb-4"
+            (click)="exportExcel()"
+          >
+            <fa-icon class="me-1" [icon]="faFileExcel">
+            </fa-icon> Exportar
+          </button>
+        </div>
+      </div>
+
+      <table class="table table-striped"  #tableFirmasDigitales>
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Razón Social / Persona</th>
+            <th scope="col">Tipo de Firma</th>
+            <th scope="col">Representante Legal</th>
+            <th scope="col">Empresa Acredit.</th>
+            <th scope="col">Fecha Emisión</th>
+            <th scope="col">Fecha Vencimineto</th>
+            <th scope="col">Rúbrica Escaneada</th>
+            <th scope="col">Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let firma of firmasDigitales$ | async; index as i">
+            <td scope="row">{{ firma.idFirma }}</td>
+            <td>
+              <ngb-highlight [result]="firma.razonSocial" [term]="filter.value" highlightClass="highlight">
+              </ngb-highlight>
+            </td>
+
+            <td>
+              <ngb-highlight [result]="getTxtSignatureType(firma.tipoFirma)" [term]="filter.value" highlightClass="highlight">
+              </ngb-highlight>
+            </td>
+
+            <td>
+              <ngb-highlight [result]="firma.representanteLegal" [term]="filter.value" highlightClass="highlight">
+              </ngb-highlight>
+            </td>
+            <td>
+              <ngb-highlight
+                [result]="firma.empresaAcreditadora || 'No aplica'"
+                [term]="filter.value" highlightClass="highlight"
+              >
+              </ngb-highlight>
+            </td>
+
+            <td>
+              <ngb-highlight
+                [result]="(firma.fechaEmision | date: 'dd/MM/yyyy') || 'No aplica'"
+                [term]="filter.value" highlightClass="highlight"
+              >
+              </ngb-highlight>
+            </td>
+
+            <td>
+              <ngb-highlight
+                [result]="(firma.fechaVencimiento | date: 'dd/MM/yyyy') || 'No aplica'"
+                [term]="filter.value" highlightClass="highlight"
+              >
+              </ngb-highlight>
+            </td>
+
+            <td>{{ (firma.rutaRubrica !== null)? 'Correcto': 'Incorrecto' }}</td>
+
+            <td>
+              <div ngbDropdown class="d-inline-block">
+                <button type="button" class="btn btn-outline-secondary py-0 px-3"
+                  id="dropdownBasic1" ngbDropdownToggle
+                >
+                  <fa-icon [icon]="faEllipsisVertical">
+                  </fa-icon>
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <button ngbDropdownItem (click)="agregarModificarFirma(false, firma)">Editar</button>
+                  <button ngbDropdownItem (click)="eliminarFirma(firma.idFirma)">Eliminar</button>
+                </div>
+              </div>
+            </td>
+
+
+            <!--td>
+              <img
+                [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag"
+                class="me-2"
+                style="width: 20px"
+              />
+              <ngb-highlight [result]="country.name" [term]="filter.value"></ngb-highlight>
+            </td>
+            <td><ngb-highlight [result]="country.area | number" [term]="filter.value"></ngb-highlight></td>
+            <td><ngb-highlight [result]="country.population | number" [term]="filter.value"></ngb-highlight></td-->
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
+
+
